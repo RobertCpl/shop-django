@@ -1,0 +1,11 @@
+services:
+  django:
+    image: python:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: .
+        target: /code
+    stdin_open: true
+    tty: true
