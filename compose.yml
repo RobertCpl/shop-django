@@ -1,11 +1,18 @@
 services:
   django:
-    image: python:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile_dev
     ports:
       - "8000:8000"
     volumes:
-      - type: bind
-        source: .
-        target: /code
+            - type: bind
+              source: .
+              target: /code
+            - type: bind
+              source: /run/host-services/ssh-auth.sock
+              target: /run/host-services/ssh-auth.sock
+    environment:
+            - SSH_AUTH_SOCK=/run/host-services/ssh-auth.sock
     stdin_open: true
     tty: true

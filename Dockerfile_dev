@@ -1,0 +1,8 @@
+FROM python:latest As development
+RUN apt-get update -y
+RUN apt-get install zsh -y && chsh -s /bin/zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN apt-get install git -y
+WORKDIR /code
+# COPY gitlab /code
+# RUN sh -c "eval $(ssh-agent) && ssh-add" 
